@@ -1,0 +1,81 @@
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/bundles/scss/styleguide.scss ***!
+  \*************************************************************************************************************************************************************************************************/
+/*	---------------------------------------------------------------
+	PX to REM
+	---------------------------------------------------------------
+*/
+.guide-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--skin-primary-color);
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  margin-top: 1.875rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--bs-gray-600);
+}
+
+.guide-subheading {
+  margin-top: 1.5625rem;
+}
+
+.heading-code-switch {
+  margin-right: 1rem;
+}
+
+.code-example {
+  display: none;
+}
+.code-active .code-example {
+  display: block;
+  margin: 1.25rem 0;
+}
+
+.sg-buttons button {
+  margin-bottom: 0.3125rem;
+}
+
+ul.colors {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0.625rem 0 1.25rem;
+}
+ul.colors li {
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 0.3125rem rgba(0, 0, 0, 0.3);
+  margin: 0.1875rem 0.1875rem 1rem;
+}
+ul.colors .swatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 10.3125rem;
+  height: 5.9375rem;
+  padding: 0.625rem;
+  color: var(--bs-white);
+  text-align: center;
+  position: relative;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+ul.colors .swatch span, ul.colors .swatch .btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+ul.colors .swatch span:not(:last-child), ul.colors .swatch .btn:not(:last-child) {
+  margin-bottom: 0.375rem;
+}
+ul.colors .swatch-title {
+  text-align: center;
+  padding: 0.4375rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+}

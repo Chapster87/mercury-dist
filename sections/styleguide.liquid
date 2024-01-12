@@ -1,0 +1,163 @@
+{{ 'prism.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+{{ 'styleguide.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'prism.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'styleguide.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width section-{{ section.id }}-padding">
+    <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ page.title | escape }}
+    </h1>
+    <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ page.content }}
+    </div>
+
+    <section class="guide-block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="row">
+            <div class="col-12">
+                <div class="guide-heading">
+                    <h2 class="guide-headline" id="colors">Colors</h2>
+                </div>
+            </div>
+        </div>
+        <div class="guide-block-body row">
+            <div class="col-12">
+                {% render 'styleguide-colors' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="row">
+            <div class="col-12">
+                <div class="guide-heading">
+                    <h2 class="guide-headline" id="text">Text</h1>
+                    <div class="heading-code-switch form-check form-switch">
+                        <input class="form-check-input code-switch" type="checkbox" role="switch" id="codeSwitch-text">
+                        <label class="form-check-label" for="codeSwitch-text">View Code</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide-block-body row">
+            <div class="col-12">
+                {% render 'styleguide-text' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-block sg-buttons{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="row">
+            <div class="col-12">
+                <div class="guide-heading">
+                    <h2 class="guide-headline" id="buttons">Buttons</h2>
+                    <div class="heading-code-switch form-check form-switch">
+                        <input class="form-check-input code-switch" type="checkbox" role="switch" id="codeSwitch-buttons">
+                        <label class="form-check-label" for="codeSwitch-buttons">View Code</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide-block-body row">
+            <div class="col-12">
+                {% render 'styleguide-buttons' %}
+                <div class="code-example">
+                    <script type="text/plain" class="language-markup">{% render 'styleguide-buttons' %}</script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="row">
+            <div class="col-12">
+                <div class="guide-heading">
+                    <h2 class="guide-headline" id="forms">Forms</h2>
+                    <div class="heading-code-switch form-check form-switch">
+                        <input class="form-check-input code-switch" type="checkbox" role="switch" id="codeSwitch-forms">
+                        <label class="form-check-label" for="codeSwitch-forms">View Code</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide-block-body row">
+            <div class="col-12 col-md-6">
+                {% render 'styleguide-forms' %}
+            </div>
+            <div class="code-example col-12">
+                <script type="text/plain" class="language-markup">{% render 'styleguide-forms' %}</script>
+            </div>
+        </div>
+    </section>
+
+    <section class="guide-block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="row">
+            <div class="col-12">
+                <div class="guide-heading">
+                    <h2 class="guide-headline" id="modals">Modals</h1>
+                    <div class="heading-code-switch form-check form-switch">
+                        <input class="form-check-input code-switch" type="checkbox" role="switch" id="codeSwitch-modals">
+                        <label class="form-check-label" for="codeSwitch-modals">View Code</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide-block-body row">
+            <div class="col-12">
+                {% render 'styleguide-modal-trigger' %}
+                <div class="code-example ">
+                    <script type="text/plain" class="language-markup">{% render 'styleguide-modal' %}</script>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% render 'styleguide-modal' %}
+
+{% schema %}
+  {
+    "name": "t:sections.main-page.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ]
+  }
+{% endschema %}
